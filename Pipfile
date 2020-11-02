@@ -5,6 +5,19 @@ name = "pypi"
 
 [packages]
 django = "*"
+config = "*"
+django-bootstrap4 = "*"
+django-heroku = "*"
+gunicorn = "*"
+pillow = "*"
+psycopg2 = "*"
+python-decouple = "*"
+whitenoise = "*"
+django-crispy-forms = "*"
+pycodestyle = "*"
+autopep8 = "*"
+confusable-homoglyphs = "*"
+coverage = "*"
 
 [dev-packages]
 
