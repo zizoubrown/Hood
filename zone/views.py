@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.decorators import login_required
+from .forms import SignUpForm, BusinessForm,UpdateProfileForm, NeighbourHoodForm, PostForm
 
 # Create your views here.
 def index(request):
