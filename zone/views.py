@@ -1,10 +1,10 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Neighbourhood, Profile, Business, Post 
+from .models import Neighborhood, Profile, Business, Post 
 from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.decorators import login_required
-from .forms import SignUpForm, BusinessForm,UpdateProfileForm, NeighbourHoodForm, PostForm
+from .forms import SignUpForm, BusinessForm,UpdateProfileForm, NeighborHoodForm, PostForm
 
 # Create your views here.
 @login_required(login_url='login')
@@ -38,4 +38,12 @@ def edit_profile(request, username):
 
 def profile(request, username):
     return render(request, 'profile.html')
+
+def neighborhoods(request):
+    all_hoods = Neighbourhood.objects.all()
+    all_hoods = all_hoods[::-1]
+    context = {
+        'all_hoods': all_hoods,
+    }
+    return render(request, 'neighborhoods.html', context)
 

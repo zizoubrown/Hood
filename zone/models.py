@@ -27,7 +27,7 @@ class Profile(models.Model):
         instance.profile.save()
 
 
-class Neighbourhood(models.Model):
+class Neighborhood(models.Model):
     name = models.CharField(max_length=50)
     location = models.CharField(max_length=60)
     admin = models.ForeignKey("Profile", on_delete=models.CASCADE, related_name='hood')
