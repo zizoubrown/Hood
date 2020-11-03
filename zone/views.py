@@ -36,4 +36,6 @@ def edit_profile(request, username):
         form = UpdateProfileForm()
     return render(request, 'create_profile.html', {'form': form})
 
-    
+def profile(request, username):
+    return render(request, 'profile.html')
+
