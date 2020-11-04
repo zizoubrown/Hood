@@ -16,7 +16,7 @@
           {% if request.user.profile.neighborhood == hood %}
           <a href="{% url 'leave-hood' hood.id %}" class="btn btn-outline-danger btn-sm">Leave Neighborhood</a>
           
-          <a href="{% url 'single-hood' user.profile.neighborhood.id %}" class="btn btn-outline-success btn-sm" style="float: right">Explore {{user.profile.neighbourhood.name}} Estate
+          <a href="{% url 'single-hood' user.profile.neighborhood.id %}" class="btn btn-outline-success btn-sm" style="float: right">Explore {{user.profile.neighborhood.name}} Estate
         </a>
           {% elif not request.user.profile.neighborhood %}
           <a href="{% url 'join-hood' hood.id %}" class="btn btn-info btn-sm">Join Neighbourood</a>
