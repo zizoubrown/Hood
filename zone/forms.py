@@ -16,12 +16,12 @@ class SignUpForm(UserCreationForm):
 class UpdateProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
-        exclude = ('user', 'neighbourhood')
+        exclude = ('user', 'neighborhood')
 
 
 class NeighborHoodForm(forms.ModelForm):
     class Meta:
-        model = Neighbourhood
+        model = Neighborhood
         exclude = ('admin',)
 
 
