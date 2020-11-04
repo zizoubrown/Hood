@@ -40,7 +40,7 @@ def profile(request, username):
     return render(request, 'profile.html')
 
 def neighborhoods(request):
-    all_hoods = Neighbourhood.objects.all()
+    all_hoods = Neighborhood.objects.all()
     all_hoods = all_hoods[::-1]
     context = {
         'all_hoods': all_hoods,
@@ -49,38 +49,38 @@ def neighborhoods(request):
 
 def create_neighborhood(request):
     if request.method == 'POST':
-        form = NeighbourHoodForm(request.POST, request.FILES)
+        form = NeighborHoodForm(request.POST, request.FILES)
         if form.is_valid():
             hood = form.save(commit=False)
             hood.admin = request.user.profile
             hood.save()
             return redirect('hood')
     else:
-        form = NeighbourHoodForm()
+        form = NeighborHoodForm()
     return render(request, 'newhood.html', {'form': form})
 
-def join_neighbourhood(request, id):
-    neighbourhood = get_object_or_404(Neighbourhood, id=id)
-    request.user.profile.neighbourhood = neighbourhood
+def join_neighborhood(request, id):
+    neighborhood = get_object_or_404(Neighborhood, id=id)
+    request.user.profile.neighborhood = neighborhood
     request.user.profile.save()
     return redirect('hood')
 
-def leave_neighbourhood(request, id):
-    hood = get_object_or_404(Neighbourhood, id=id)
-    request.user.profile.neighbourhood = None
+def leave_neighborhood(request, id):
+    hood = get_object_or_404(Neighborhood, id=id)
+    request.user.profile.neighborhood = None
     request.user.profile.save()
     return redirect('hood')
 
-def single_neighbourhood(request, hood_id):
-    hood = Neighbourhood.objects.get(id=hood_id)
-    business = Business.objects.filter(neighbourhood=hood)
+def single_neighborhood(request, hood_id):
+    hood = Neighborhood.objects.get(id=hood_id)
+    business = Business.objects.filter(neighborhood=hood)
     posts = Post.objects.filter(hood=hood)
     posts = posts[::-1]
     if request.method == 'POST':
         form = BusinessForm(request.POST)
         if form.is_valid():
             b_form = form.save(commit=False)
-            b_form.neighbourhood = hood
+            b_form.neighborhood = hood
             b_form.user = request.user.profile
             b_form.save()
             return redirect('single-hood', hood.id)
@@ -95,7 +95,7 @@ def single_neighbourhood(request, hood_id):
     return render(request, 'single_hood.html', params)
 
 def create_post(request, hood_id):
-    hood = Neighbourhood.objects.get(id=hood_id)
+    hood = Neighborhood.objects.get(id=hood_id)
     if request.method == 'POST':
         form = PostForm(request.POST)
         if form.is_valid():
